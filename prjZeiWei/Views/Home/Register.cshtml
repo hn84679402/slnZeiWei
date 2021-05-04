@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2>會員註冊</h2>
+<form method="get" action="RegisterGet">
+    帳號:@Html.TextBox("fAccount", null, new { placeholder = "請輸入姓名" })<br />
+    密碼:@Html.Password("fPassword", null, new { placeholder = "請輸入密碼" })<br />
+    確認密碼:@Html.Password("CheckPassword", null, new { placeholder = "請輸入密碼" })<br />
+    <h5>@ViewBag.errorMessages</h5>
+    <input type="submit" value="送出" />
+</form>
+

@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    form {
+        border:thin;
+        margin:10px;
+        width:500px;
+        background-color:aqua;
+    }
+    h5{
+        color:red;
+        font:20px;
+    }
+</style>
+<h2>會員登入</h2>
+<form method="get" action="Home/Login">
+    帳號:@Html.TextBox("fAccount", null, new { placeholder = "請輸入姓名" })<br />
+    密碼:@Html.Password("fPassword", null, new { placeholder = "請輸入密碼" })<br />
+    <h5>@ViewBag.errorMessages</h5>
+    <input type="submit" value="送出" />
+</form>
+        @Html.ActionLink("註冊新帳號", "Register", "Home")
+

@@ -1,0 +1,21 @@
+﻿@model IEnumerable<prjZeiWei.Models.LobbyTemple>
+@{
+    ViewBag.Title = "歡迎光臨紫薇月老交友平台";
+}
+<h2>紫微月老交友平台大廳</h2>
+<h1>@ViewBag.IP</h1>
+ <div class="container col-md col-lg">
+     @foreach(var item in Model)
+     {
+         string imgsrc = @item.Id + ".jpg";
+         <div class="col-lg col-md">
+             <div class="thumbnail">
+                 <img src="~/images/@imgsrc" style="width:80%"/>
+                 <div class="col-lg col-md">
+                     <h5>@item.Address</h5>
+                     <a> @Html.ActionLink(@item.Name, @item.Controller, new { mid = ViewBag.fid }, new { @class = "btn btn-danger" })</a>
+                 </div>
+             </div>
+         </div>
+     }
+ </div>

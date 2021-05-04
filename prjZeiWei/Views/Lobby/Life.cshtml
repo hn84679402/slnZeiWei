@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "命盤運勢";
+}
+<style>
+    h2 {
+        color:skyblue;
+        font-size:55px;
+    }
+    h4{
+        color:aqua
+    }
+</style>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('html').dblclick(function () {
+            alert('hello ChiChi');
+        });
+        $('a').mouseover(function () {
+            var message = "<p>You moused over a link</p>";
+            $('main').append(message);
+        });
+        $('#button').click(function () {
+            $(this).val("Stop That");
+        });
+    });
+</script>
+<h2>剖析你個性的優缺點</h2>
+  命宮星耀:<a>@ViewBag.Life</a>
+  遷移宮星耀:<a>@ViewBag.Move</a><hr />
+  <button id="button">Click Me</button>
+<div class="col-lg-4">
+    <h4>@ViewBag.Life1</h4>
+    <h4>@ViewBag.Life2</h4>
+</div>
+<main></main>
+

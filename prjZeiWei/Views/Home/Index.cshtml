@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<h2>會員登入</h2>
+<form method="get" class="container col-md col-lg" action="~/Home/Login">
+    <div class="col-md col-lg">帳號:@Html.TextBox("fAccount", null, new { placeholder = "請輸入姓名" })</div><br />
+    <div class="col-md col-lg ">密碼:@Html.Password("fPassword", null, new { placeholder = "請輸入密碼" })</div><br />
+    <h5 class="col-md col-lg">@ViewBag.errorMessages</h5>
+    <input class="col-md col-lg btn-success btn" type="submit" value="送出" />
+</form>
+<div class="col-md col-lg">
+    @Html.ActionLink("註冊新帳號", "Register", "Home")
+</div>
