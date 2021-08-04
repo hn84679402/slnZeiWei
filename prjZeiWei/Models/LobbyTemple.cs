@@ -7,9 +7,15 @@ namespace prjZeiWei.Models
 {
 	public class LobbyTemple
 	{
-		public string Id { get; set; }
-		public string Name { get; set; }
-		public string Address { get; set; }
-		public string Controller { get; set; }
+		public string id { get; set; }
+		public string name { get; set; }
+		public string sex { get; set; }
+		public string age { get; set; }
+		public string pair1 { get; set; }
+		public string pair2 { get; set; }
+		public string pair3 { get; set; }
+		public string pair4 { get; set; }
+		public int matchLevel { get; set; }
+		public string errorMessage { get; set; }
 	}
 }

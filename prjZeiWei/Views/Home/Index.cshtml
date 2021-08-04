@@ -1,14 +1,40 @@
-﻿
+﻿<style>
+    body{
+        background-color:black;
+    }
+    h5{
+        color:white;
+    }
+</style>
+
 @{
     ViewBag.Title = "Index";
 }
-<h2>會員登入</h2>
-<form method="get" class="container col-md col-lg" action="~/Home/Login">
-    <div class="col-md col-lg">帳號:@Html.TextBox("fAccount", null, new { placeholder = "請輸入姓名" })</div><br />
-    <div class="col-md col-lg ">密碼:@Html.Password("fPassword", null, new { placeholder = "請輸入密碼" })</div><br />
-    <h5 class="col-md col-lg">@ViewBag.errorMessages</h5>
-    <input class="col-md col-lg btn-success btn" type="submit" value="送出" />
-</form>
+<h2 style="color:white">會員登入</h2>
+<div class="container col-lg-12 col-md-12">
+    <form method="post" action="@Url.Action("checkValidationNumber")" id="formPost">
+        <div class="col-md col-lg"><h4 style="color:white">帳號</h4>@Html.TextBox("fAccount", null, new { style = "id = fAccount", placeholder = "請輸入帳號" })</div><br />
+        <div class="col-md col-lg "><h4 style="color:white">密碼</h4>@Html.Password("fPassword", null, new { style = "id = fPassword", placeholder = "請輸入密碼" })</div><br />
+        <div class="col-md col-lg "><h4 style="color:white">驗證碼</h4>@Html.TextBox("validationNumber", null, new { style = "id = validationNum", placeholder = "請輸入驗證碼" })</div>
+        <img src="@Url.Action("getVaildationImg")" id="imgCode"/>
+        <input id="Button1" type="button" value="更新驗證碼" onclick= "imgCode.src= '@Url.Action("getVaildationImg")?'+Math.random() "/>
+        <h5 class="col-md col-lg">@ViewBag.errorMessages</h5>
+        <input id="requestPath" name="requestPath" value="@Request.FilePath" hidden/>
+        <input class="col-md col-lg btn-success btn" id="btnSend" type="submit" value="送出" />
+    </form>
+</div>
 <div class="col-md col-lg">
     @Html.ActionLink("註冊新帳號", "Register", "Home")
 </div>
+<script src="~/Scripts/jquery-3.5.1.min.js"></script>
+<script>
+    $('#formPost').submit(function () {
+        if ($('#fAccount').val() == "" || $('#fPassword').val() == "") {
+            alert("帳號、密碼等欄位不可為空");
+            return false;
+        } else {
+            $('#formPost').submit();
+        }        
+    })
+</script>
+

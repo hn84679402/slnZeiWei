@@ -1,17 +1,21 @@
-﻿
+﻿<style>
+    body {
+        background-color: black;
+    }
+</style>
 @{
     ViewBag.Title = "MemberData";
 }
 <script>
 
 </script>
-<h2>會員基本資料</h2>
+<h2 style="color:white">會員基本資料</h2>
 <form method="get" action="MemberLife">
     <input type="hidden" name="Mid" value=@ViewBag.Mid>
-    姓名:@Html.TextBox("MLName", null, new { placeholder = "請輸入姓名" })<br />
-    性別:@Html.DropDownList("MLSex")<br />
-    生辰:@Html.DropDownList("MLBirYear")年 @Html.DropDownList("MLBirMonth") 月 @Html.DropDownList("MLBirDate") 日<br />
-    生時:@Html.DropDownList("MLBirTime")
+    <h4 style="color:white">姓名</h4>@Html.TextBox("MLName", null, new { placeholder = "請輸入姓名" })<br />
+    <h4 style="color:white">性別</h4>@Html.DropDownList("MLSex")<br />
+    <h4 style="color:white">生辰</h4>@Html.DropDownList("MLBirYear")年 @Html.DropDownList("MLBirMonth") 月 @Html.DropDownList("MLBirDate") 日<br />
+    <h4 style="color:white">生時</h4>@Html.DropDownList("MLBirTime")
     <input class="btn btn-success" type="submit" value="送出" />
 </form>
 

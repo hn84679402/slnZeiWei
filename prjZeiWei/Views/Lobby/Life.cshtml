@@ -2,37 +2,86 @@
 @{
     ViewBag.Title = "命盤運勢";
 }
-<style>
-    h2 {
-        color:skyblue;
-        font-size:55px;
-    }
-    h4{
-        color:aqua
-    }
-</style>
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $('html').dblclick(function () {
-            alert('hello ChiChi');
-        });
-        $('a').mouseover(function () {
-            var message = "<p>You moused over a link</p>";
-            $('main').append(message);
-        });
-        $('#button').click(function () {
-            $(this).val("Stop That");
-        });
-    });
-</script>
-<h2>剖析你個性的優缺點</h2>
-  命宮星耀:<a>@ViewBag.Life</a>
-  遷移宮星耀:<a>@ViewBag.Move</a><hr />
-  <button id="button">Click Me</button>
-<div class="col-lg-4">
-    <h4>@ViewBag.Life1</h4>
-    <h4>@ViewBag.Life2</h4>
-</div>
-<main></main>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        @@import url("https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,700,900&display=swap");
+
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+        body{
+            background-color:black;
+        }
+        .banner {
+            width: 100%;
+            height: 100vh;
+            background-color: #ccc;
+            background: linear-gradient(115deg, #7bf 50%, transparent 50%) center center / 100% 100%, url("https://picsum.photos/1200/600?random=10") right center / auto 100%;
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1440px;
+            height: 100%;
+            margin: auto;
+        }
+
+        .banner-txt {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+            .banner-txt h1 {
+                font-size: 80px;
+                border-bottom: 1px solid #333;
+                font-weight: 900;
+                padding-bottom: .3em;
+                margin-bottom: .3em;
+            }
+
+                .banner-txt h1 small {
+                    display: block;
+                    font-size: 53px;
+                    font-weight: 700;
+                }
+
+            .banner-txt h2 {
+                font-size: 50px;
+                font-weight: 700;
+            }
+
+            .banner-txt p {
+                font-size: 20px;
+                font-weight: 300;
+            }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <div class="container">
+            <div class="banner-txt">
+                <h1>
+                    命盤解析
+                    <small>
+                        命宮星耀
+                    </small>
+                </h1>
+                <h2>@ViewBag.Life</h2>
+                <a href="">前往了解詳細命盤資訊</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
 

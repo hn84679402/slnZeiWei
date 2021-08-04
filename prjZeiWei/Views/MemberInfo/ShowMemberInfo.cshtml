@@ -1,0 +1,68 @@
+﻿@model prjZeiWei.Models.MemberInfo
+@{
+    ViewBag.Title = "MemberInfo";
+}
+<style>
+    body{
+        background-color:black;
+    }
+    h3{
+        color:white;
+    }
+    h5{
+        color:white;
+    }
+</style>
+<h3>紫薇月老會員資料</h3>
+<hr/>
+<div class="container">
+    <div class="form-group">
+        <h5>暱稱</h5>
+        <h5 id="lifeStar">@Model.name</h5>
+    </div>
+    <div class="form-group">
+        <h5>出生年</h5>
+        <h5 id="lifeStar">@Model.birthYear</h5>
+    </div>
+    <div class="form-group">
+        <h5>出生月</h5>
+        <h5 id="lifeStar">@Model.birthMonth</h5>
+    </div>
+    <div class="form-group">
+        <h5>出生日</h5>
+        <h5 id="lifeStar">@Model.birthDay</h5>
+    </div>
+    <div class="form-group">
+        <h5>出生時辰</h5>
+        <h5 id="lifeStar">@Model.birthTime</h5>
+    </div>
+    <div class="form-group">
+        <h5>命宮星耀</h5>
+        <h5 id="lifeStar">@Model.lifeStar</h5>
+    </div>
+    <div class="form-group">
+        <h5>遷移宮星耀</h5>
+        <h5 id="lifeStar">@Model.moveStar</h5>
+    </div>
+    <div class="form-group">
+        <h5>財帛宮星耀</h5>
+        <h5 id="lifeStar">@Model.moneyStar</h5>
+    </div>
+    <div class="form-group">
+        <h5>事業宮星耀</h5>
+        <h5 id="lifeStar">@Model.companyStar</h5>
+    </div>
+    <div class="form-group">
+        <h5>夫妻宮星耀</h5>
+        <h5 id="lifeStar">@Model.coupleStar</h5>
+    </div>
+    <div class="form-group">
+        <h5>田宅宮星耀</h5>
+        <h5 id="lifeStar">@Model.luckyStar</h5>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("修改會員資料", "MemberData", "Home")
+    @Html.ActionLink("上傳照片", "uploadPhoto", "Lobby")
+    @Html.ActionLink("回大廳", "Index", "Lobby")
+</p>

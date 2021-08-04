@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ZeiWeiModelStoreContainer" CdmEntityContainer="ZeiWeiEntities">
+    <EntitySetMapping Name="ChatBar">
+      <EntityTypeMapping TypeName="ZeiWeiModel.ChatBar">
+        <MappingFragment StoreEntitySet="ChatBar">
+          <ScalarProperty Name="CId" ColumnName="CId" />
+          <ScalarProperty Name="Cgroup" ColumnName="Cgroup" />
+          <ScalarProperty Name="Cchat" ColumnName="Cchat" />
+          <ScalarProperty Name="CpostId" ColumnName="CpostId" />
+          <ScalarProperty Name="CpostTime" ColumnName="CpostTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChatCreate">
+      <EntityTypeMapping TypeName="ZeiWeiModel.ChatCreate">
+        <MappingFragment StoreEntitySet="ChatCreate">
+          <ScalarProperty Name="CId" ColumnName="CId" />
+          <ScalarProperty Name="CPostId" ColumnName="CPostId" />
+          <ScalarProperty Name="CgetId" ColumnName="CgetId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Member">
+      <EntityTypeMapping TypeName="ZeiWeiModel.Member">
+        <MappingFragment StoreEntitySet="Member">
+          <ScalarProperty Name="MId" ColumnName="MId" />
+          <ScalarProperty Name="MAccount" ColumnName="MAccount" />
+          <ScalarProperty Name="MPassword" ColumnName="MPassword" />
+          <ScalarProperty Name="MToken" ColumnName="MToken" />
+          <ScalarProperty Name="MPhotos" ColumnName="MPhotos" />
+          <ScalarProperty Name="MPhotosMimeType" ColumnName="MPhotosMimeType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MemberLife">
+      <EntityTypeMapping TypeName="ZeiWeiModel.MemberLife">
+        <MappingFragment StoreEntitySet="MemberLife">
+          <ScalarProperty Name="MLid" ColumnName="MLid" />
+          <ScalarProperty Name="MLNumber" ColumnName="MLNumber" />
+          <ScalarProperty Name="MLName" ColumnName="MLName" />
+          <ScalarProperty Name="MLSex" ColumnName="MLSex" />
+          <ScalarProperty Name="MLBirYear" ColumnName="MLBirYear" />
+          <ScalarProperty Name="MLBirMonth" ColumnName="MLBirMonth" />
+          <ScalarProperty Name="MLBirDate" ColumnName="MLBirDate" />
+          <ScalarProperty Name="MLBirTime" ColumnName="MLBirTime" />
+          <ScalarProperty Name="MLLife" ColumnName="MLLife" />
+          <ScalarProperty Name="MLMove" ColumnName="MLMove" />
+          <ScalarProperty Name="MLMoney" ColumnName="MLMoney" />
+          <ScalarProperty Name="MLCompany" ColumnName="MLCompany" />
+          <ScalarProperty Name="MLCouple" ColumnName="MLCouple" />
+          <ScalarProperty Name="MLLucky" ColumnName="MLLucky" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

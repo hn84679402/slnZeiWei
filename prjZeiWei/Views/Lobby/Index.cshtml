@@ -2,20 +2,110 @@
 @{
     ViewBag.Title = "歡迎光臨紫薇月老交友平台";
 }
-<h2>紫微月老交友平台大廳</h2>
-<h1>@ViewBag.IP</h1>
+<style>
+    body{
+        background-color:black;
+    }
+    .wrap {
+        width: 350px;
+        display: inline-block;
+        margin: auto;
+        padding: 5px;
+    }
+
+    .item {
+        width: 350px;
+        margin: 15px;
+        text-align: center;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        transform: translateY(0px);
+        transition: .5s;
+    }
+
+        .item img {
+            width: 100%;
+            vertical-align: middle;
+        }
+
+        .item h2 {
+            border-bottom: 1px solid #888;
+            padding-bottom: .3em;
+            margin-bottom: .4em;
+            font-weight: 900;
+            transition: .25s;
+        }
+
+        .item p {
+            line-height: 1.6;
+            font-weight: 900;
+            transition: .25s;
+        }
+
+        .item .txt {
+            padding: 20px;
+            position: relative;
+        }
+
+            .item .txt:before {
+                content: '';
+                position: absolute;
+                width: 0;
+                height: 0;
+                left: 0;
+                top: 0;
+                border-top: 50px solid transparent;
+                border-left: 174px solid #fff;
+                border-right: 174px solid #fff;
+                transform: translateY(-100%);
+            }
+
+        .item:hover {
+            transform: translateY(-50px);
+        }
+
+            .item:hover .txt {
+                background-image: linear-gradient(0deg, #FB8076, #FEB85D)
+            }
+
+                .item:hover .txt:before {
+                    border-left: 174px solid #FEB85D;
+                    border-right: 174px solid #FEB85D;
+                }
+
+            .item:hover h2 {
+                color: #fff;
+                border-bottom-color: #fff;
+            }
+
+            .item:hover p {
+                color: #fff;
+            }
+</style>
+<h2 style="color:white">紫微月老交友平台大廳</h2>
  <div class="container col-md col-lg">
      @foreach(var item in Model)
      {
-         string imgsrc = @item.Id + ".jpg";
-         <div class="col-lg col-md">
-             <div class="thumbnail">
-                 <img src="~/images/@imgsrc" style="width:80%"/>
-                 <div class="col-lg col-md">
-                     <h5>@item.Address</h5>
-                     <a> @Html.ActionLink(@item.Name, @item.Controller, new { mid = ViewBag.fid }, new { @class = "btn btn-danger" })</a>
+     <div class="wrap">
+         <div class="item">
+             @if (ViewBag.fid != item.id)
+             {
+                 if (item.sex == "女")
+                 {
+                     <img src="~/images/@item.id" width="200" height="200" onerror="this.src='/images/03.png'" />
+                 }
+                 else
+                 {
+                     <img src="~/images/@item.id" width="200" height="200" onerror="this.src='/images/03.png'" />
+                 }
+                 <div class="txt">
+                     <h5>暱稱:@item.name</h5>
+                     <h5>性別:@item.sex</h5>
+                     <h5>年齡:@item.age</h5>
+                     <h5>契合等級:@item.matchLevel</h5>
                  </div>
+             }
              </div>
-         </div>
+     </div>
      }
  </div>

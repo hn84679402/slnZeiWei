@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ZeiWeiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ChatBar">
+    <Key>
+      <PropertyRef Name="CId" />
+    </Key>
+    <Property Name="CId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cgroup" Type="Int32" />
+    <Property Name="Cchat" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="CpostId" Type="Int32" />
+    <Property Name="CpostTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ChatCreate" Relationship="Self.FK__ChatBar__Cgroup__403A8C7D" FromRole="ChatBar" ToRole="ChatCreate" />
+    <NavigationProperty Name="Member" Relationship="Self.FK__ChatBar__CpostId__412EB0B6" FromRole="ChatBar" ToRole="Member" />
+  </EntityType>
+  <EntityType Name="ChatCreate">
+    <Key>
+      <PropertyRef Name="CId" />
+    </Key>
+    <Property Name="CId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CPostId" Type="Int32" />
+    <Property Name="CgetId" Type="Int32" />
+    <NavigationProperty Name="ChatBar" Relationship="Self.FK__ChatBar__Cgroup__403A8C7D" FromRole="ChatCreate" ToRole="ChatBar" />
+    <NavigationProperty Name="Member" Relationship="Self.FK__ChatCreat__CgetI__3D5E1FD2" FromRole="ChatCreate" ToRole="Member" />
+    <NavigationProperty Name="Member1" Relationship="Self.FK__ChatCreat__CPost__3C69FB99" FromRole="ChatCreate" ToRole="Member" />
+  </EntityType>
+  <EntityType Name="Member">
+    <Key>
+      <PropertyRef Name="MId" />
+    </Key>
+    <Property Name="MId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MAccount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MToken" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MPhotos" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="MPhotosMimeType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ChatBar" Relationship="Self.FK__ChatBar__CpostId__412EB0B6" FromRole="Member" ToRole="ChatBar" />
+    <NavigationProperty Name="ChatCreate" Relationship="Self.FK__ChatCreat__CgetI__3D5E1FD2" FromRole="Member" ToRole="ChatCreate" />
+    <NavigationProperty Name="ChatCreate1" Relationship="Self.FK__ChatCreat__CPost__3C69FB99" FromRole="Member" ToRole="ChatCreate" />
+    <NavigationProperty Name="MemberLife" Relationship="Self.FK__MemberLif__MLNum__398D8EEE" FromRole="Member" ToRole="MemberLife" />
+  </EntityType>
+  <EntityType Name="MemberLife">
+    <Key>
+      <PropertyRef Name="MLid" />
+    </Key>
+    <Property Name="MLid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MLNumber" Type="Int32" />
+    <Property Name="MLName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="MLSex" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="MLBirYear" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="MLBirMonth" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="MLBirDate" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="MLBirTime" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="MLLife" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MLMove" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MLMoney" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MLCompany" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MLCouple" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MLLucky" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Member" Relationship="Self.FK__MemberLif__MLNum__398D8EEE" FromRole="MemberLife" ToRole="Member" />
+  </EntityType>
+  <Association Name="FK__ChatBar__Cgroup__403A8C7D">
+    <End Role="ChatCreate" Type="Self.ChatCreate" Multiplicity="0..1" />
+    <End Role="ChatBar" Type="Self.ChatBar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChatCreate">
+        <PropertyRef Name="CId" />
+      </Principal>
+      <Dependent Role="ChatBar">
+        <PropertyRef Name="Cgroup" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChatBar__CpostId__412EB0B6">
+    <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+    <End Role="ChatBar" Type="Self.ChatBar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="MId" />
+      </Principal>
+      <Dependent Role="ChatBar">
+        <PropertyRef Name="CpostId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChatCreat__CgetI__3D5E1FD2">
+    <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+    <End Role="ChatCreate" Type="Self.ChatCreate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="MId" />
+      </Principal>
+      <Dependent Role="ChatCreate">
+        <PropertyRef Name="CgetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChatCreat__CPost__3C69FB99">
+    <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+    <End Role="ChatCreate" Type="Self.ChatCreate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="MId" />
+      </Principal>
+      <Dependent Role="ChatCreate">
+        <PropertyRef Name="CPostId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MemberLif__MLNum__398D8EEE">
+    <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+    <End Role="MemberLife" Type="Self.MemberLife" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="MId" />
+      </Principal>
+      <Dependent Role="MemberLife">
+        <PropertyRef Name="MLNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ZeiWeiEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ChatBar" EntityType="Self.ChatBar" />
+    <EntitySet Name="ChatCreate" EntityType="Self.ChatCreate" />
+    <EntitySet Name="Member" EntityType="Self.Member" />
+    <EntitySet Name="MemberLife" EntityType="Self.MemberLife" />
+    <AssociationSet Name="FK__ChatBar__Cgroup__403A8C7D" Association="Self.FK__ChatBar__Cgroup__403A8C7D">
+      <End Role="ChatCreate" EntitySet="ChatCreate" />
+      <End Role="ChatBar" EntitySet="ChatBar" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChatBar__CpostId__412EB0B6" Association="Self.FK__ChatBar__CpostId__412EB0B6">
+      <End Role="Member" EntitySet="Member" />
+      <End Role="ChatBar" EntitySet="ChatBar" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChatCreat__CgetI__3D5E1FD2" Association="Self.FK__ChatCreat__CgetI__3D5E1FD2">
+      <End Role="Member" EntitySet="Member" />
+      <End Role="ChatCreate" EntitySet="ChatCreate" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChatCreat__CPost__3C69FB99" Association="Self.FK__ChatCreat__CPost__3C69FB99">
+      <End Role="Member" EntitySet="Member" />
+      <End Role="ChatCreate" EntitySet="ChatCreate" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MemberLif__MLNum__398D8EEE" Association="Self.FK__MemberLif__MLNum__398D8EEE">
+      <End Role="Member" EntitySet="Member" />
+      <End Role="MemberLife" EntitySet="MemberLife" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

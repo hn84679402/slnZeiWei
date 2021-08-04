@@ -6,6 +6,11 @@
     <title>@ViewBag.Title - 紫薇月老交友平台</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <style>
+        .pull-right {
+            float: right !important;
+        }
+    </style>
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
 </head>
 <body>
@@ -17,25 +22,43 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("紫薇月老交友平台", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
+                @Html.ActionLink("紫薇月老交友平台", "Index", "Lobby", new { area = "" }, new { @class = "navbar-brand" })
+            </div>            
             <div class="navbar-collapse collapse">
+             @if (Session["fid"] != null)
+             {
                 <ul class="nav navbar-nav">
-                    <li>交友聊天</li>
+                    <li>@Html.ActionLink("會員資料", "ShowMemberInfo", "MemberInfo", new { area = "" }, new { @class = "navbar-brand" })</li>
+                    <li>@Html.ActionLink("命盤解析", "Life", "Lobby", new { area = "" }, new { @class = "navbar-brand" })</li>
+                    <li>@Html.ActionLink("財運解析", "Money", "Lobby", new { area = "" }, new { @class = "navbar-brand" })</li>
+                    <li>@Html.ActionLink("姻緣解析", "Love", "Lobby", new { area = "" }, new { @class = "navbar-brand" })</li>
+                    <li>@Html.ActionLink("交友大廳", "chatRoom", "Chat", new { area = "" }, new { @class = "navbar-brand" })</li>
                 </ul>
+
+                    <div class="navbar-collapse collapse pull-right">
+                        <ul class="nav navbar-nav pull-right">
+                            <li class="">@Html.ActionLink("登出", "Logout", "Lobby")</li>
+                        </ul>
+                    </div>
+                }
+                <form class="form-inline pull-right" action="https://www.google.com/search">
+                    <button class="btn btn-warning pull-right" type="submit">Select</button>
+                    <input class="form-control pull-right" type="search" placeholder="Search" name="q" />
+                </form>
             </div>
-        </div>
+            </div>
     </div>
 
     <div class="container body-content">
         @RenderBody()
         <hr /><br />
         <footer>
-            <p>&copy; @DateTime.Now.Year - 綉煜科技股份有限公司所有</p>
+            <p style="color:white">&copy; @DateTime.Now.Year - 皮卡丘股份有限公司所有</p>
         </footer>
     </div>
 
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+    <script src="~/Scripts/jquery-3.5.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
 </body>
 </html>

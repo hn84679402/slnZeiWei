@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ZeiWeiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ChatBar">
+    <Key>
+      <PropertyRef Name="CId" />
+    </Key>
+    <Property Name="CId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cgroup" Type="int" />
+    <Property Name="Cchat" Type="varchar" MaxLength="1000" />
+    <Property Name="CpostId" Type="int" />
+    <Property Name="CpostTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ChatCreate">
+    <Key>
+      <PropertyRef Name="CId" />
+    </Key>
+    <Property Name="CId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CPostId" Type="int" />
+    <Property Name="CgetId" Type="int" />
+  </EntityType>
+  <EntityType Name="Member">
+    <Key>
+      <PropertyRef Name="MId" />
+    </Key>
+    <Property Name="MId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MAccount" Type="varchar" MaxLength="50" />
+    <Property Name="MPassword" Type="varchar" MaxLength="50" />
+    <Property Name="MToken" Type="varchar" MaxLength="50" />
+    <Property Name="MPhotos" Type="varbinary(max)" />
+    <Property Name="MPhotosMimeType" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="MemberLife">
+    <Key>
+      <PropertyRef Name="MLid" />
+    </Key>
+    <Property Name="MLid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MLNumber" Type="int" />
+    <Property Name="MLName" Type="varchar" MaxLength="20" />
+    <Property Name="MLSex" Type="varchar" MaxLength="10" />
+    <Property Name="MLBirYear" Type="varchar" MaxLength="10" />
+    <Property Name="MLBirMonth" Type="varchar" MaxLength="10" />
+    <Property Name="MLBirDate" Type="varchar" MaxLength="10" />
+    <Property Name="MLBirTime" Type="varchar" MaxLength="10" />
+    <Property Name="MLLife" Type="varchar" MaxLength="100" />
+    <Property Name="MLMove" Type="varchar" MaxLength="100" />
+    <Property Name="MLMoney" Type="varchar" MaxLength="100" />
+    <Property Name="MLCompany" Type="varchar" MaxLength="100" />
+    <Property Name="MLCouple" Type="varchar" MaxLength="100" />
+    <Property Name="MLLucky" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <Association Name="FK__ChatBar__Cgroup__403A8C7D">
+    <End Role="ChatCreate" Type="Self.ChatCreate" Multiplicity="0..1" />
+    <End Role="ChatBar" Type="Self.ChatBar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChatCreate">
+        <PropertyRef Name="CId" />
+      </Principal>
+      <Dependent Role="ChatBar">
+        <PropertyRef Name="Cgroup" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChatBar__CpostId__412EB0B6">
+    <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+    <End Role="ChatBar" Type="Self.ChatBar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="MId" />
+      </Principal>
+      <Dependent Role="ChatBar">
+        <PropertyRef Name="CpostId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChatCreat__CgetI__3D5E1FD2">
+    <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+    <End Role="ChatCreate" Type="Self.ChatCreate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="MId" />
+      </Principal>
+      <Dependent Role="ChatCreate">
+        <PropertyRef Name="CgetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChatCreat__CPost__3C69FB99">
+    <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+    <End Role="ChatCreate" Type="Self.ChatCreate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="MId" />
+      </Principal>
+      <Dependent Role="ChatCreate">
+        <PropertyRef Name="CPostId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MemberLif__MLNum__398D8EEE">
+    <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+    <End Role="MemberLife" Type="Self.MemberLife" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="MId" />
+      </Principal>
+      <Dependent Role="MemberLife">
+        <PropertyRef Name="MLNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ZeiWeiModelStoreContainer">
+    <EntitySet Name="ChatBar" EntityType="Self.ChatBar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChatCreate" EntityType="Self.ChatCreate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Member" EntityType="Self.Member" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MemberLife" EntityType="Self.MemberLife" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__ChatBar__Cgroup__403A8C7D" Association="Self.FK__ChatBar__Cgroup__403A8C7D">
+      <End Role="ChatCreate" EntitySet="ChatCreate" />
+      <End Role="ChatBar" EntitySet="ChatBar" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChatBar__CpostId__412EB0B6" Association="Self.FK__ChatBar__CpostId__412EB0B6">
+      <End Role="Member" EntitySet="Member" />
+      <End Role="ChatBar" EntitySet="ChatBar" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChatCreat__CgetI__3D5E1FD2" Association="Self.FK__ChatCreat__CgetI__3D5E1FD2">
+      <End Role="Member" EntitySet="Member" />
+      <End Role="ChatCreate" EntitySet="ChatCreate" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChatCreat__CPost__3C69FB99" Association="Self.FK__ChatCreat__CPost__3C69FB99">
+      <End Role="Member" EntitySet="Member" />
+      <End Role="ChatCreate" EntitySet="ChatCreate" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MemberLif__MLNum__398D8EEE" Association="Self.FK__MemberLif__MLNum__398D8EEE">
+      <End Role="Member" EntitySet="Member" />
+      <End Role="MemberLife" EntitySet="MemberLife" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
