@@ -52,7 +52,7 @@ namespace prjZeiWei.Models
 			client.Headers.Add(HttpRequestHeader.ContentType, "application/json");
 			try
 			{
-				//打後端登入API
+				//Get backend WebAPI
 				var body = client.DownloadString("http://localhost:7717/api/Member/MemberLogin?fAccount=" + fAccount + "&fPassword=" + fPassword);
 				//反序列化
 				var list = new JavaScriptSerializer().Deserialize<List<MemberLogin>>(body);
