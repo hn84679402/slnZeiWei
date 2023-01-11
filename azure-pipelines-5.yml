@@ -13,7 +13,7 @@ variables:
   dockerRegistryServiceConnection: 'a3814e67-c787-4c52-a431-f59da6fcf8df'
   imageRepository: 'testk8sdocker'
   containerRegistry: 'k8scontainertest.azurecr.io'
-  dockerfilePath: '**/Dockerfile'
+  dockerfilePath: '.pipeline/Dockerfile'
   tag: '$(Build.BuildId)'
 
   # Agent VM image name
