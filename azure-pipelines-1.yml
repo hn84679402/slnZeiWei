@@ -14,7 +14,7 @@ variables:
   dockerRegistryServiceConnection: 'db99ad17-cfc2-4659-855b-13ecc48c03c3'
   imageRepository: 'k8szeiweitest'
   containerRegistry: 'k8scontainertest.azurecr.io'
-  dockerfilePath: '/Dockerfile'
+  dockerfilePath: '/buildinfo/docker/Dockerfile'
   tag: '$(Build.BuildId)'
   imagePullSecret: 'k8scontainertest1826f902-auth'
 
