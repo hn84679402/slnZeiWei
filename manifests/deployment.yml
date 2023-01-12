@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: testk8szeiwei 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: testk8szeiwei
+  template:
+    metadata:
+      labels:
+        app: testk8szeiwei 
+    spec:
+      containers:
+        - name: testk8szeiwei 
+          image: k8scontainertest.azurecr.io/testk8szeiwei
+          ports:
+          - containerPort: 80
