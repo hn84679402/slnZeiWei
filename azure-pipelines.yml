@@ -7,7 +7,7 @@ trigger:
 - master
 
 pool:
-  vmImage: 'windows-2019'
+  vmImage: 'windows-latest'
 
 variables:
   solution: '**/*.sln'
@@ -32,3 +32,14 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+
+
+- task: CopyFiles@2
+      inputs:
+        targetFolder: '$(Build.ArtifactStagingDirectory)' 
+ 
+- task: PublishBuildArtifacts@1    
+displayName: 'Publish Artifact: drop'
+inputs:
+    PathtoPublish: '$(build.artifactstagingdirectory)'
+    
